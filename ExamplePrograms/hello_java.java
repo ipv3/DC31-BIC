@@ -8,7 +8,7 @@
 
 public class hello_java {
     public static void main(String[] args) {
- //       int orange = 5;
+        int orange = 5;
         System.out.println("Hello, World!");
     }
 }
