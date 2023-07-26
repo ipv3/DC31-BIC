@@ -1,0 +1,424 @@
+
+CREATE LINUX LAPTOP PC, INSTALL LANGUAGES, BACKUP/RESTORE HARD DRIVE - FEDORA LINUX WORKSTATION
+Document Version: 0.01  August 12, 2023
+Author:  D.J. Davis
+E-mail:  ZeroRingD@gmail.com
+Twitter: @ZeroRingD
+Copyright (C) 2023  D.J. Davis.  All Rights Reserved
+
+
+
+TABLE OF CONTENTS
+=================
+Introduction
+Disclaimer
+Prerequisites
+Errata
+Download Media Writer, OS Image; Make Bootable Live USB
+Boot PC from Fedora Live Boot USB
+Optional: Back Up the Hard Drive
+Install Fedora Linux on Your PC
+Install Languages on Fedora Linux
+Optional: RESTORE HARD DRIVE FROM BACKUP IMAGE  Restore Hard Drive from Backup Image
+
+
+
+INTRODUCTION
+============
+Oftentimes, the most straight-forward platform for program development is Linux. We can find an old PC that works well with Linux, but then there is the "joy" of figuring out the OS install, and the hesitancy of losing the current OS environment. To address these concerns, this document walks us through a new OS install while creating a block-by-block backup copy of the current hard drive that can be restored later. And did I say that Linux is free???
+
+With the advent of Linux Live images, we can boot off of a USB stick to play with an environment. The Live image is good for giving us a flavor of the environment and it provides tools for system administration. This includes the tools to run a backup and a restore.
+
+
+
+DISCLAIMER
+==========
+The information provided here is presented as a free service for general informational purposes only. This service is continually under development. While the author tries to present information that is timely and accurate, the author makes no guarantees or warranties. The author and/or any presentation venue makes no representation, warranty or guarantee of any kind, neither express nor implied, regarding the accuracy, completeness, validity, or fitness-of-purpose of this information.
+
+Use this information at your own risk. Do not perform these instructions on a Production computer.  Do not perform these instructions on any computer that contains important/needed/desired information that you need to retain. Be aware that these instructions will result in a new operating system being installed that will erase any previous operating system, programs, configuration, and data.
+
+In these instructions the mention of, and reference to, any documents constitutes a fair-use of any copyrighted material as provided for in Section 107 of the US copyright law.
+
+
+
+ERRATA
+======
+None at this time.  Send any irregularites in the procedure to ZeroRingD@gmail.com
+
+
+
+PREREQUISITES
+=============
+- An Intel PC (but not a Chrome PC): minimum 2 GB RAM, preferably 4 GB or greater, minimum 32 GB disk,
+preferably 64 GB or greater. If you need to back up the hard drive, the size should be preferably 512 GB or less (because the backup drive/file needs to be larger). Currently, Linux has been seen to run reliably on systems that can be below the published minimum specs for RAM, and aggregate processor number/speed 
+- IF YOU CANNOT USE THE DESTINATION PC TO DOWNLOAD AND SAVE THE OS IMAGE (e.g. you're installing on a new PC and you want to back up the disk image for later use): A Windows/Mac/Linux PC with minimum 3 GB disk free, at least 1 available USB drive slot, and Internet connectivity
+- The ability to set the BIOS to boot from a USB drive before the PC attempts to boot from its hard drive
+- A USB flash drive 4 GB or greater to hold the Fedora Live bootable image. I recommend USB 3.0 or faster
+- IF YOU NEED TO BACK UP THE EXISTING HARD DRIVE OF DESTINATION PC: That PC must have at least 2 USB drive slots to perform a backup of the HD
+- IF YOU NEED TO BACK UP THE EXISTING HARD DRIVE OF DESTINATION PC: A USB flash drive OR external hard drive that is larger than the PC disk drive.  I recommend USB 3.0 or faster
+- If plugging in 2 USB Flash drives at the same time, check to make sure the slots are not too close. On some systems the slots are two close for 2 Flash drives side by side (observed on an HP)
+- Paper/pen or camera/camerphone to document a few settings
+- Internet connectivity (get the Wi-Fi password if it is a protected network)
+
+
+
+DOWNLOAD MEDIA WRITER, OS IMAGE; MAKE BOOTABLE LIVE USB
+=======================================================
+
+Download Media Writer and Fedora Live Boot USB Image
+----------------------------------------------------
+ 1. Create a directory under C:\  such as C:\Fedora-Download
+
+ 2. Go to Fedora Workstation Download Page:
+    https://www.fedoraproject.org/workstation/download/
+
+ 3. Download:  Fedora Media Writer
+
+ 4. Cut/Paste the Writer executable program to:  C:\Fedora-Download
+
+For guidance, review the "Learn More" documentation for Fedora Media Writer:
+https://docs.fedoraproject.org/en-US/fedora/latest/preparing-boot-media/#_fedora_media_writer
+
+
+ 5. Download:  Fedora Workstation 38  |  Live ISO  |  For Intel and AMD x86_64 systems
+
+ 6. Cut/Paste the Live ISO image to C:\Fedora-Download
+
+For installation guidance, review the "Learn More" documentation for Fedora Media Writer:
+https://docs.fedoraproject.org/en-US/quick-docs/creating-and-using-a-live-installation-image/
+
+
+Install/Run Fedora Media Writer
+-----------------------
+ 7. Go to program file on disk (in C:\Fedora-Download). Run the program (click or double-click)
+        Allow it to make changes on the computer
+        Agree to the License
+        Note the location of the destination folder
+        Click: Install
+        Click: Next
+        Click: Finish
+
+ 8. By default, Fedora Media Writer will run after the installation
+        Insert a SPARE USB drive that WILL BE OVERWRITTEN. tHE DRIVE SHOULD BE 4 GB or greater
+        Select image source: Select .iso file
+        Select the ISO file on disk (in C:\Fedora-Download)
+        Select the destination USB stick (it might be preselected)
+        Continue the process
+    Note: You might receive several messages from Windows that you need to format a drive.  Just Cancel these
+
+        When the process is done, click: Finish
+        Fedora Media Writer takes you back to Select Image Source.  Select X (cancel at top of box)
+
+ 9. Unmount the USB drive & remove, or shut down the PC / power off the PC and remove the USB drive
+
+10. Affix a label to the USB drive as "Fedora nn Live Boot" or find a closable sandwich bag and label
+
+
+
+BOOT PC FROM FEDORA LIVE BOOT USB
+=================================
+
+ 1. With the PC off, insert the USB drive
+
+ 2. Set the USB drive (perhaps USB HDD) so that it boots before the regular Hard drive
+    Note:  There is a good chance that you might need to go into the BIOS settings to change the boot order
+    After power-on you Might need to press ENTER, F12, F10 , F2, F1, DEL, possibly F4, or some other function key to enter the BIOS Setup menu or Boot menu.  There might or might not be guidance displayed on the screen after power on.
+
+ 3. Power on the PC and boot from the USB drive
+    Boot menu:
+        Start Fedora-Live-Workstation-nn
+
+ 4. On the welcome screen you are prompted whether you want to install Fedora. Choose: Not Now
+
+ 5. Explore your Live Boot OS or search the Internet to learn the following tasks/skills:
+    - Connect PC to WiFi/Internet
+    - Start a CLI window
+    - In CLI, basic command entry and command completion (Tab key)
+    - Start the Internet browser (Firefox)
+    - Shut down Fedora
+
+
+
+Optional: BACK UP THE HARD DRIVE
+================================
+
+ 1. Boot the PC from the Fedora Live USB
+
+ 2. Run cmd prompt
+
+ 3. Determine the device name of the drive to back up
+
+    It will be good to know the approximate size of the drive to make it easier to identify
+    Type:
+        su
+        fdisk -l
+        - or -
+        parted -l
+
+    then:  df -h
+        This command makes it easier to see if your backup drive is mounted (and where)
+
+
+    Look for the drive. Keep in mind that a drive can have several partitions. You NEED to back up the entire drive with all the partitions.  Examples:
+    /dev/sda
+    /dev/mmcblk0   (can have partitions p1 to p4)
+
+    Identify the destination drive
+    Usually, USB drives are formatted for Windows and Linux can read them
+
+
+Back Up the Drive Using the dd Linux Utility
+--------------------------------------------
+ 4. Run a cmd prompt
+ 5. Type:
+        su  (if not superuser already)
+        dd  if=/dev/xxxxxx  of=/dev/xxxxxy/<filename>
+        Example:  dd if=/dev/sda   of=/dev/mmc01/pc2-disk-image-Aug-25-2023
+
+    Note: This process might take an hour or more.  The entire contents of the drive are read and copied. Normally, the dd command does not provide any feedback. The screen will go dark in 5 or 10 minutes without any keyboard/mouse input. Just press the SHIFT key to display the screen
+
+    Note: It is recommended that you make a second copy on another USB drive or external hard drive
+
+
+Optional: For integrity, compute a checksum for the backup file
+---------------------------------------------------------------
+ 6. Type an appropriate command to compute a checksum of the file
+    md5sum  /dev/xxxxxy/<filename>
+    Example:  md5sum  /dev/mmc01/pc2-disk-image-Aug-25-2023
+                 or
+            sha256sum /dev/mmc01/pc2-disk-image-Aug-25-2023
+
+ 7. Capture the checksum value with a picture or other method
+
+    At least five checksum utility programs are available on the Live USB: sum, md5sum, sha1sum, sha256sum, and sha512sum. Of these, md5sum and sha256sum might appear to be used the more frequently.
+
+    Note:  This will take a while.  The hard drive back-up image is a very large file
+
+
+Finishing Steps
+---------------
+ 8. Write down the command you used to back up the drive. Store this note with the drive
+
+ 9. Shut down the PC, power off the PC, and remove the USB drive where you wrote the backup file
+
+10. Affix a label to the USB drive such as "MyPC HD Image 1 mm-dd-yyyy" or find a closable sandwich bag and label
+
+/dev/sda1  
+/run/media/liveuser/Seagate Backup Plus Drive
+
+
+
+INSTALL FEDORA LINUX ON YOUR PC
+===============================
+
+ 1. Boot Computer from the USB
+
+ 2. Get on Wi-Fi and the Internet
+
+ 3. On the welcome screen you are prompted whether you want to install Fedora. Choose: Install Fedora
+
+ 4. Follow this set of prompts
+    "WELCOME TO FEDORA"
+    Select your prefered language.  Click: Continue
+
+    "INSTALLATION SUMMARY"
+    For Localization: Verify Keyboard layout, Timezone, Sytem information
+    You might need to go into System and select the disk to be used for installation. It will be wiped out.
+    Click: Installation Destination
+
+    "INSTALLATION DESTINATION"
+    Select the local disk  (a checkmark needs to appear on it)
+    Click the checkbox: "Free up space by removing or shrinking existing partitions"
+    Click: Done
+
+    "RECLAIM DISK SPACE"
+    Click: Delete all
+    Click: Reclaim space
+
+    "INSTALLATION SUMMARY"
+    Click: Begin Installation 
+
+    "INSTALLATION PROGRESS"
+    Note: This will take about 10 minutes
+    A message should display that Fedora is ready.
+    Click: Finish Installation
+
+ 5. Power off the PC
+
+ 6. Remove the Live USB
+
+ 7. Power on the system
+
+ 8. Follow this set of prompts
+    "Setup / Welcome to Fedora Linux nn"
+    Click: Start Setup
+
+    "Privacy"
+    Select the options as you choose
+    Click: Next
+
+    Third-Part Repositories"
+    By default, this is enabled
+    Click: Next
+
+    "Connect Your Online Accounts"
+    Choose accounts or click Skip
+
+    "About You"
+    Full Name / Username   
+    Enter a name          (I prefer to enter a short username instead of a long full name)
+    Click: Next
+
+    "Pasword"
+    Enter and Confirm a password
+    (Note: Remember your username and password!!!  Write it down in a secure place.)
+
+    "Setup Complete"
+    Click: Start Using Fedora Linux
+
+    "Welcome to GNOME"
+    No Thanks / Take Tour
+    Click: No Thanks
+
+
+Note on root password...
+
+
+
+INSTALL LANGUAGES ON FEDORA LINUX
+=================================
+
+By default, Perl and Python version 3 are installed. 
+ 1. To test:
+    Type: perl
+       ...to exit press Ctrl-C  --or--  press Ctrl-D
+    Type: python
+       ... to exit press Ctrl-D
+
+The PHP runtime and Java Runtime (JRE) are also installed by default, but these require the command-line and compiler, respectively
+
+
+Check / Install Other Languages and Preferred Text Editor
+---------------------------------------------------------
+Perform these steps while the PC has connectivity to the Internet to search repositories and install software.
+
+2. It is probably a good idea to have the C and C++ compiler and related tools installed. Other software might depend on them
+    C
+    ---
+    Type: gcc
+    If not installed:
+        Type:  dnf groupinstall 'Development Tools'
+
+    C++
+    ---
+    Type: g++
+    If not installed:
+        Proceed to install package ==>  gcc-c++
+
+ 3. Install any/all of these languages that you choose
+    Ruby
+    ----
+    Type: ruby
+    If present: 
+        Type  end  --or--  press Ctrl-C  --or--  press Ctrl-D  to exit
+    If not installed:
+        Proceed to install package ==>  rubypick
+
+    Rust
+    ----
+    Type: rustc
+    If not installed:
+        Proceed to install package ==>  rust
+
+    PHP command line
+    ----------------
+    Type: php
+    If present: 
+       Press Ctrl-C  --or-- press Ctrl-D  to exit
+    If not installed:
+        Proceed to install package ==>  php-cli
+
+    Swift
+    -----
+    Type: swiftc
+    If not installed:
+        Proceed to install package ==>  swift-lang
+
+    NodeJS
+    ------
+    Type: node
+    If present: 
+        Type  .exit  to exit
+    If not installed:
+        Type: dnf provides node
+        Type: dnf install nodejs
+
+    Java
+    ----
+    Type: javac
+    If not installed:
+        Type: dnf provides javac 
+           (at publication time, this command returns java-17-openjdk-devel-... ... ...)
+        Type: dnf install java-17-openjdk-devel
+
+    Kotlin
+    ------
+    ***  kotlinc is a manual install.  Search the Internet for instructions.
+
+    NASM - Networkwide Assembler
+    ----------------------------
+    Type: nasm
+    If not installed:
+        Proceed to install package ==>  nasm
+
+ 4. Install this (or similar) graphical editor that works well with programming languages
+    gedit Editor
+    ------------
+    Type: gedit
+    If not installed:
+        Proceed to install package ==>  gedit
+
+
+
+Optional: RESTORE HARD DRIVE FROM BACKUP IMAGE
+==============================================
+Note:  This process DESTROYS your Linux installation on the PC. BEFORE performing these instructions, be sure to back up your hard drive if you want to retain it for later use.
+
+Be sure that your PC is set to boot from a USB drive.  For more information, see the section: BOOT PC FROM FEDORA LIVE BOOT USB
+
+Boot PC from Linux Live USB
+---------------------------
+ 1. WITH THE COMPUTER OFF, plug in the Fedora Live USB. Also, plug in the USB drive or external hard drive cable containing the drive image that is to be restored
+
+ 2. Boot Computer from the Fedora Live USB
+On the welcome screen you are prompted whether you want to install Fedora. Choose: Not Now
+
+3. Run the cmd prompt
+
+
+Find Your Drives
+----------------
+ 4. Determine the device names of the USB drive containing the backup image, and the interal hard drive to be overwritten
+
+It will be good to know the approximate sizes of these drives to make them easier to identify
+su
+fdisk -l
+parted -l
+
+ 5. Look for the drives. You NEED to restore the entire drive with all of its partitions.  Examples:
+/dev/sda
+/dev/mmcblk0   
+
+
+Restore the Hard Drive Using the dd Linux Utility
+-------------------------------------------------
+ 6. dd  if=/dev/xxxxxy/<filename> of=/dev/xxxxxx
+    Example:  dd if=/dev/mmc01/pc2-disk-image-Aug-25-2023  of=/dev/sda   
+
+Note: This process might take an hour or more.  The entire contents of the backup file are read and copied to the hard drive
+
+ 7. Shut down the PC
+
+ 8. Remove the USB drives
+
+ 9. Boot the PC to test the restored operating system
