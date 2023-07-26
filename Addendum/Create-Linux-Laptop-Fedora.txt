@@ -161,10 +161,11 @@ Optional: BACK UP THE HARD DRIVE
 
     Look for the drive. Keep in mind that a drive can have several partitions. You NEED to back up the entire drive with all the partitions.  Examples:
     /dev/sda
-    /dev/mmcblk0   (can have partitions p1 to p4)
+    /dev/sdb
+    /dev/mmcblk0   (often seen with partitions p1 to p4)
 
-    Identify the destination drive
-    Usually, USB drives are formatted for Windows and Linux can read them
+    Identify the destination drive AND mounted directory path
+    Usually, USB drives and external drives are formatted for Windows.  Linux can read them
 
 
 Back Up the Drive Using the dd Linux Utility
@@ -172,10 +173,12 @@ Back Up the Drive Using the dd Linux Utility
  4. Run a cmd prompt
  5. Type:
         su  (if not superuser already)
-        dd  if=/dev/xxxxxx  of=/dev/xxxxxy/<filename>
-        Example:  dd if=/dev/sda   of=/dev/mmc01/pc2-disk-image-Aug-25-2023
+        dd  if=/dev/xxxxxx  of=/<filepath>/<filename>
+        Example:  dd if=/dev/mmcblk0   of=/run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023
 
     Note: This process might take an hour or more.  The entire contents of the drive are read and copied. Normally, the dd command does not provide any feedback. The screen will go dark in 5 or 10 minutes without any keyboard/mouse input. Just press the SHIFT key to display the screen
+
+    NOTE: The input file (if) is the PC internal hard drive, it is usually NOT mounted by Linux during the Live boot, and it probably should not be mounted during this copy operation. The command might complain if the input file (if) is mounted. On the other hand, the destination drive needs to be mounted with a file path to the directory where you plan to write. In the current Live version of Fedora, the destination drive is mounted automatically *IF* it is plugged in when the Live image is booted. As we see here, Fedora mounted the external drive at /run/media/liveuser/Seagate Backup Plus Drive.  We can see this readily with the  df -h  command that shows us Fedora mounted the /dev/sda1 filesystem containing a 1.9TB drive on the mount point /run/media/liveuser/Seagate Backup Plus Drive.
 
     Note: It is recommended that you make a second copy on another USB drive or external hard drive
 
@@ -183,16 +186,19 @@ Back Up the Drive Using the dd Linux Utility
 Optional: For integrity, compute a checksum for the backup file
 ---------------------------------------------------------------
  6. Type an appropriate command to compute a checksum of the file
-    md5sum  /dev/xxxxxy/<filename>
-    Example:  md5sum  /dev/mmc01/pc2-disk-image-Aug-25-2023
-                 or
-            sha256sum /dev/mmc01/pc2-disk-image-Aug-25-2023
+        md5sum  /<filepath>/<filename>
+        Example:  md5sum  /run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023
+                    -or-
+                sha256sum /run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023
 
- 7. Capture the checksum value with a picture or other method
-
-    At least five checksum utility programs are available on the Live USB: sum, md5sum, sha1sum, sha256sum, and sha512sum. Of these, md5sum and sha256sum might appear to be used the more frequently.
+    At least five checksum utility programs are available on the Live USB: sum, md5sum, sha1sum, sha256sum, and sha512sum. Of these, md5sum and sha256sum might appear to be used more frequently.
 
     Note:  This will take a while.  The hard drive back-up image is a very large file
+
+    Note:  If you run the (same) checksum program over the input disk drive, the program should compute the same value as the backup file. Of course, this will take a while to run
+           e.g.:  sha256sum  /dev/mmcblk0
+
+ 7. Capture the checksum value with a picture or other method
 
 
 Finishing Steps
@@ -388,7 +394,7 @@ Be sure that your PC is set to boot from a USB drive.  For more information, see
 
 Boot PC from Linux Live USB
 ---------------------------
- 1. WITH THE COMPUTER OFF, plug in the Fedora Live USB. Also, plug in the USB drive or external hard drive cable containing the drive image that is to be restored
+ 1. WITH THE COMPUTER OFF, plug in the Fedora Live USB. Also, plug in the USB drive or external hard drive cable that contains the drive image that is to be restored
 
  2. Boot Computer from the Fedora Live USB
 On the welcome screen you are prompted whether you want to install Fedora. Choose: Not Now
@@ -398,7 +404,7 @@ On the welcome screen you are prompted whether you want to install Fedora. Choos
 
 Find Your Drives
 ----------------
- 4. Determine the device names of the USB drive containing the backup image, and the interal hard drive to be overwritten
+ 4. Determine the device names of the USB drive / external drive containing the backup image, and the interal hard drive to be overwritten
 
 It will be good to know the approximate sizes of these drives to make them easier to identify
 su
@@ -412,8 +418,8 @@ parted -l
 
 Restore the Hard Drive Using the dd Linux Utility
 -------------------------------------------------
- 6. dd  if=/dev/xxxxxy/<filename> of=/dev/xxxxxx
-    Example:  dd if=/dev/mmc01/pc2-disk-image-Aug-25-2023  of=/dev/sda   
+ 6. dd  if=/<filepath/<filename>  of=/dev/xxxxxx
+    Example:  dd if=/run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023 of=/dev/mmcblk0
 
 Note: This process might take an hour or more.  The entire contents of the backup file are read and copied to the hard drive
 
