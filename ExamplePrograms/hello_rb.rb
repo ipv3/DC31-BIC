@@ -8,4 +8,4 @@ name = gets  # but normally we use gets.chomp to remove CR
 print "Your name is " + name + "\n"
 print "Your name is #{name}"
 apple = 5 ; pear = "A pear" ; apple = apple + 1
-if apple = 6 then puts "Six" ; pear = 2 ; bic = "Awesome!" ; end
+if apple == 6 then puts "Six" ; pear = 2 ; bic = "Awesome!" ; end
