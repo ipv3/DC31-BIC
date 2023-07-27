@@ -27,7 +27,7 @@ INTRODUCTION
 ============
 Oftentimes, the most straight-forward platform for program development is Linux. We can find an old PC that works well with Linux, but then there is the "joy" of figuring out the OS install, and the hesitancy of losing the current OS environment. To address these concerns, this document walks us through a new OS install while creating a block-by-block backup copy of the current hard drive that can be restored later. And did I say that Linux is free???
 
-With the advent of Linux Live images, we can boot off of a USB stick to play with an environment. The Live image is good for giving us a flavor of the environment and it provides tools for system administration. This includes the tools to run a backup and a restore.
+With the advent of Linux Live images, we can boot off of a USB stick to play with an environment without installing it to the hard drive. The Live image is good for giving us a flavor of the environment and it provides tools for system administration. This includes the tools to run a backup and a restore.
 
 
 
@@ -287,7 +287,16 @@ INSTALL FEDORA LINUX ON YOUR PC
     Click: No Thanks
 
 
-Note on root password...
+Optional: Regarding the root password
+In this procedure the password that is set is for our regular user account is a portion of the installation process.  Unix/Linux systems use an account named "root" for system and administrative processes. It is possible to administer some aspects of a system without knowing the root password. Upon installation, our user is added to a role called "sudo" tht allows us to run administrative system commands by confirming our own regular user password.
+Example:
+    sudo less /var/log/anaconda/anaconda.log
+This command grants a super-user privilege to run the less/more command to read an installation log that is a protected system file.
+
+Although it is sometimes not recommended, some system owners desire to set and have the root password. If this is desired, the following command allows a regular user with sudo privileges to set the root password:
+    sudo passwd root
+
+Be sure to protect this credentially properly.  Also, if additional users are added to your system, be sure to regulate the users who have sudo privileges. sudo permissions are configured in file /etc/sudoers. In this file, we see a setup for users who are in a group that is named "wheel". We look at the file named /etc/group and see that our regular account is added to the entry for the "wheel" group. Naturally we need to exercise due care and due dilligence for the users who are added to the "wheel" group entry.
 
 
 
@@ -313,13 +322,14 @@ Perform these steps while the PC has connectivity to the Internet to search repo
     ---
     Type: gcc
     If not installed:
-        Type:  dnf groupinstall 'Development Tools'
+        Type:  sudo dnf groupinstall 'Development Tools'
 
     C++
     ---
     Type: g++
     If not installed:
         Proceed to install package ==>  gcc-c++
+        If your regular account has insuficient privileges, type: sudo dnf install gcc-c++
 
  3. Install any/all of these languages that you choose
     Ruby
@@ -329,12 +339,14 @@ Perform these steps while the PC has connectivity to the Internet to search repo
         Type  end  --or--  press Ctrl-C  --or--  press Ctrl-D  to exit
     If not installed:
         Proceed to install package ==>  rubypick
+        If your regular account has insuficient privileges, type: sudo dnf install rubypick
 
     Rust
     ----
     Type: rustc
     If not installed:
         Proceed to install package ==>  rust
+        If your regular account has insuficient privileges, type: sudo dnf install rust
 
     PHP command line
     ----------------
@@ -343,12 +355,14 @@ Perform these steps while the PC has connectivity to the Internet to search repo
        Press Ctrl-C  --or-- press Ctrl-D  to exit
     If not installed:
         Proceed to install package ==>  php-cli
+        If your regular account has insuficient privileges, type: sudo dnf install php-cli
 
     Swift
     -----
     Type: swiftc
     If not installed:
         Proceed to install package ==>  swift-lang
+        If your regular account has insuficient privileges, type: sudo dnf install swift-lang
 
     NodeJS
     ------
@@ -357,7 +371,7 @@ Perform these steps while the PC has connectivity to the Internet to search repo
         Type  .exit  to exit
     If not installed:
         Type: dnf provides node
-        Type: dnf install nodejs
+        Type: sudo dnf install nodejs
 
     Java
     ----
@@ -365,17 +379,28 @@ Perform these steps while the PC has connectivity to the Internet to search repo
     If not installed:
         Type: dnf provides javac 
            (at publication time, this command returns java-17-openjdk-devel-... ... ...)
-        Type: dnf install java-17-openjdk-devel
+        Type: sudo dnf install java-17-openjdk-devel
 
     Kotlin
     ------
     ***  kotlinc is a manual install.  Search the Internet for instructions.
 
+
+    Go
+    ------
+    Type: go
+    If present: 
+        Type  .exit  to exit   ???
+    If not installed:
+        Type: dnf provides go
+        Type: sudo dnf install golang
+ 
     NASM - Networkwide Assembler
     ----------------------------
     Type: nasm
     If not installed:
         Proceed to install package ==>  nasm
+        If your regular account has insuficient privileges, type: sudo dnf install nasm
 
  4. Install this (or similar) graphical editor that works well with programming languages
     gedit Editor
@@ -383,7 +408,7 @@ Perform these steps while the PC has connectivity to the Internet to search repo
     Type: gedit
     If not installed:
         Proceed to install package ==>  gedit
-
+        If your regular account has insuficient privileges, type: sudo dnf install gedit
 
 
 Optional: RESTORE HARD DRIVE FROM BACKUP IMAGE
