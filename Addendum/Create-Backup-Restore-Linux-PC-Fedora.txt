@@ -1,10 +1,13 @@
 CREATE LINUX PC, INSTALL LANGUAGES, BACKUP/RESTORE HARD DRIVE - FEDORA LINUX WORKSTATION
-Document Version: 0.01  August 12, 2023
+Document Version: 0.02  August 12, 2023
 Author:  D.J. Davis
 E-mail:  ZeroRingD@gmail.com
 Twitter: @ZeroRingD
 Copyright (C) 2023  D.J. Davis.  All Rights Reserved
 
+
+TODO:
+License
 
 
 TABLE OF CONTENTS
@@ -23,23 +26,26 @@ Optional: Restore Hard Drive from Backup Image
 
 
 
+
 INTRODUCTION
 ============
 
 Oftentimes, the most straight-forward platform for program development is Linux. We can find an old PC that works well with Linux, but then there is the "joy" of figuring out the OS install, and the hesitancy of losing the current OS environment. To address these concerns, this document walks us through a new OS install while creating a block-by-block backup copy of the current hard drive that can be restored later. And did I say that Linux is free???
 
-With the advent of Linux Live images, we can boot off of a USB stick to play with an environment without installing the OS to the hard drive. The Live image is good for giving us a flavor of the environment. Also, it provides tools for system administration. This includes the tools to run a backup, a restore, and perform a checksum calculation to verify the integrity of a copy.
+With the advent of Linux Live images, we can boot off of a USB stick to play with an environment without installing the OS to the hard drive. The Live image gives us a flavor of the environment. Also, it provides tools for system administration. This includes tools to run a backup, a restore, and perform a checksum calculation of a file or hard drive to verify the integrity of a copy later.
+
 
 
 
 DISCLAIMER
 ==========
 
-The information provided here is presented as a free service for general informational purposes only. This service is continually under development. While the author tries to present information that is timely and accurate, the author makes no guarantees or warranties. The author and/or any presentation venue makes no representation, warranty or guarantee of any kind, neither express nor implied, regarding the accuracy, completeness, validity, or fitness-of-purpose of this information.
+The information provided here is presented as a free service for general informational purposes only. This service is under development. While the author tries to present information that is timely and accurate, the author makes no guarantees or warranties. The author and/or any presentation venue makes no representation, warranty or guarantee of any kind, neither express nor implied, regarding the accuracy, completeness, validity, or fitness-of-purpose of this information.
 
-Use this information at your own risk. Do not perform these instructions on a Production computer.  Do not perform these instructions on any computer that contains important/needed/desired information that you need to retain. Be aware that these instructions will result in a new operating system being installed that will erase any previous operating system, programs, configuration, and data. Be sure to read/understand all of these instructions before you begin.
+Use this information at your own risk. Do not perform these instructions on a Production computer.  Do not perform these instructions on any computer that contains important/needed/desired information that you need to retain. Be aware that these instructions will result in a new operating system being installed that will erase any previous operating system, programs, configuration, and data. Be sure to read and understand all of these instructions before you begin.
 
 In these instructions the mention of, and reference to, any documents constitutes a fair-use of any copyrighted material as provided for in Section 107 of the US copyright law.
+
 
 
 
@@ -50,24 +56,27 @@ None at this time.  Send any irregularites in the procedure to ZeroRingD@gmail.c
 
 
 
+
 PREREQUISITES
 =============
 
 - An Intel PC (but not a Chrome PC): minimum 2 GB RAM, preferably 4 GB or greater, minimum 32 GB disk,
-preferably 64 GB or greater. If you need to back up the hard drive, the size should be preferably 512 GB or less (because the backup drive/file needs to be larger). Currently, Linux has been seen to run reliably on systems that are below the official  minimum specs for RAM and processor cores, speed 
+preferably 64 GB or greater. If you need to back up the hard drive, the size should be preferably 512 GB or less (because the backup drive/file needs to be larger). Currently, Linux has been seen to run reliably on systems that might be below the official minimum specs for RAM, processor cores, or speed 
 - IF YOU CANNOT USE THE DESTINATION PC TO DOWNLOAD AND SAVE THE OS IMAGE (e.g. you're installing on a new PC and you want to back up the disk image for later use): A Windows/Mac/Linux PC with minimum 3 GB disk free, at least 1 available USB drive slot, and Internet connectivity
 - The ability to set the BIOS to boot from a USB drive before the PC boots from its hard drive
 - A USB flash drive 4 GB or greater to hold the Fedora Live bootable image. I recommend USB 3.0 or faster
-- IF YOU NEED TO BACK UP THE EXISTING HARD DRIVE OF DESTINATION PC: That PC must have at least 2 USB drive slots to perform a backup of the PC disk drive
-- IF YOU NEED TO BACK UP THE EXISTING HARD DRIVE OF DESTINATION PC: A USB flash drive OR external hard drive that is larger than the PC disk drive.  I recommend USB 3.0 or faster
-- If plugging in 2 USB Flash drives at the same time, check to make sure the slots are not too close. On some systems the slots are two close for 2 Flash drives side by side (this issue was observed on an HP)
-- Paper/pen or camera/camerphone to document a few settings
+- IF YOU NEED TO BACK UP THE EXISTING HARD DRIVE OF DESTINATION PC: That PC must have at least 2 USB slots (of the proper size) to perform a backup of the PC disk drive
+- IF YOU NEED TO BACK UP THE EXISTING HARD DRIVE OF DESTINATION PC: A USB flash drive OR external hard drive that is larger than the PC disk drive.  I recommend USB 3.0 or faster (Note: The size of the backup file can be less than the hard drive of the destination PC if optional compression is used)
+- If plugging in 2 USB Flash drives at the same time, check to make sure the slots are not too close. On some systems the slots are two close for 2 USB Flash drives side by side (this issue has been observed on an HP laptop)
+- Camera/cameraphone to document a few settings
 - Internet connectivity (get the Wi-Fi password if it is a protected network)
+
 
 
 
 DOWNLOAD MEDIA WRITER, OS IMAGE; MAKE BOOTABLE LIVE USB
 =======================================================
+ Approximate Time: 1 hour
 
 Download Media Writer and Fedora Live Boot USB Image
 ----------------------------------------------------
@@ -119,8 +128,10 @@ Install/Run Fedora Media Writer
 
 
 
+
 BOOT PC FROM FEDORA LIVE BOOT USB
 =================================
+ Approximate Time: 30 minutes (longer to learn skills in Step 5)
 
  1. With the PC off, insert the USB drive
 
@@ -143,8 +154,10 @@ BOOT PC FROM FEDORA LIVE BOOT USB
 
 
 
+
 Optional: BACK UP THE HARD DRIVE
 ================================
+ Approximate Time: 1 hour (up to 3+ hours for larger hard drives and/or compression)
 
  1. WITH THE COMPUTER OFF, plug in the Fedora Live USB. Also, plug in the USB drive or external hard drive cable where the backup image will be written
 
@@ -183,14 +196,14 @@ Back Up the Drive Using the dd Linux Utility
  6. Type:
         su  (if not superuser already)
         dd  if=/dev/xxxxxx  of=/<filepath>/<filename>
-        Example:  dd if=/dev/mmcblk0   of=/run/media/liveuser/Seagate\ Backup\ Plus\ Drive/pc2-disk-image-Aug-25-2023
+        Example:  dd if=/dev/mmcblk0   of=/run/media/liveuser/Seagate\ Backup\ Plus\ Drive/pc2-disk-image-Aug-25-2023.img
 
 Because the path of the output file is so long AND this disk drive name contains spaces, an easier way to do this is to go to this longer directory and then only have to enter the ending filename. Using [Tab] completion, this process becomes:
     cd /run/media [Tab] [Tab] [Tab] [Enter]    (assumes media and liveuser have no additional files)
        -followed by the command -
     pwd      (to see that you are there)
         -and-
-    dd if=/dev/mmcblk0   of=pc2-disk-image-Aug-25-2023
+    dd if=/dev/mmcblk0   of=pc2-disk-image-Aug-25-2023.img
 
 A little lesson about Linux:: In Linux, directory names and file names become "interesting" if they have spaces. Linux handles them, but Linux users often make their lives easier by using dashes or underscores instead of spaces. In the example above we see backslashes used. They are NOT in the directory name, but are used to make an "escape sequence" for a space. The following example might help. We can use:
 cd Seagate\ Backup\ Plus\ Drive    -or-  cd 'Seagate Backup Plus Drive'
@@ -211,9 +224,9 @@ Optional Highly Recommended: For integrity, compute a checksum for the backup fi
 -----------------------------------------------------------------------------------
  9. Type an appropriate command to compute a checksum of the file
         md5sum  /<filepath>/<filename>
-        Example:  md5sum  /run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023
+        Example:  md5sum  /run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023.img
                     -or-
-                sha256sum /run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023
+                sha256sum /run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023.img
 
     At least five checksum utility programs are available on the Live USB: sum, md5sum, sha1sum, sha256sum, and sha512sum. Of these, md5sum and sha256sum might appear to be used more frequently.
 
@@ -232,9 +245,24 @@ Finishing Steps
 12. Affix a label to the USB drive such as "MyPC HD Image 1 mm-dd-yyyy" or find a closable sandwich bag and label
 
 
+Optional:  Back Up Using gzip Compression
+-----------------------------------------
+ 1. Type:
+        su  (if not superuser already)
+        dd  if=/dev/xxxxxx | gzip -c  >  /<filepath>/<filename>
+        Example:  dd if=/dev/mmcblk0 | gzip -c > /run/media/liveuser/Seagate\ Backup\ Plus\ Drive/pc2-disk-image-Aug-25-2023.img.gzip
+                        -or-
+                  cd   /run/media/liveuser/Seagate\ Backup\ Plus\ Drive    (change to dest directory)
+                  dd if=/dev/mmcblk0 | gzip -c > pc2-disk-image-Aug-25-2023.img.gzip
+
+    This will take notably longer than a backup without compression. In my lightly used system with a 64 GB disk, the gzipped backup was about 7 GB; 11 percent of the original size. 
+
+
+
 
 INSTALL FEDORA LINUX ON YOUR PC
 ===============================
+ Approximate Time: 1 hour
 
  1. Boot Computer from the USB
 
@@ -319,8 +347,10 @@ Be sure to protect this credentially properly.  Also, if additional users are ad
 
 
 
+
 INSTALL LANGUAGES ON FEDORA LINUX
 =================================
+ Approximate Time: 1 hour
 
 By default, Perl and Python version 3 are installed. 
  1. To test:
@@ -402,7 +432,15 @@ Perform these steps while the PC has connectivity to the Internet to search repo
 
     Kotlin
     ------
-    ***  kotlinc is a manual install.  Search the Internet for instructions.
+    Type: kotlinc 
+    If present: 
+        Type  Ctrl-C   Ctrl-C to exit
+    If not installed:
+        As directed on the kotlinlang.org website ...
+        Type: curl -s "https://get.sdkman.io" | bash
+        Follow: Directions to open new terminal window, copy/paste the command given
+        Then, as directed, in the new terminal window type: sdk help
+        Then type: sdk install kotlin
 
     Go
     ------
@@ -430,8 +468,10 @@ Perform these steps while the PC has connectivity to the Internet to search repo
 
 
 
+
 Optional: RESTORE HARD DRIVE FROM BACKUP IMAGE
 ==============================================
+ Approximate Time: 1 hour (up to 5+ hours for larger hard drives and/or compression)
 
 Note:  This process DESTROYS your Linux installation on the PC. BEFORE performing these instructions, be sure to back up your hard drive if you want to retain it for later use.
 
@@ -471,7 +511,7 @@ Find Your Drives
 Restore the Hard Drive Using the dd Linux Utility
 -------------------------------------------------
  6. dd  if=/<filepath/<filename>  of=/dev/xxxxxx
-    Example:  dd if=/run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023 of=/dev/mmcblk0
+    Example:  dd if=/run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023.img of=/dev/mmcblk0
 
     Note: This process might take an hour or more.  The entire contents of the backup file are read and copied to the hard drive
     If you captured the blocks copied with a picture or other method, you can compare this upon the completion of the command
@@ -492,6 +532,17 @@ Restore the Hard Drive Using the dd Linux Utility
 10. Remove the USB drives
 
 11. Boot the PC to test the restored operating system
+
+
+Optional:  Restore Backup That Uses gzip Compression
+-----------------------------------------------------
+ 1. Type:
+        su  (if not superuser already)
+        gunzip -c /<filepath>/<filename> |  dd  of=/dev/xxxxxx  
+        Example:  gunzip -c /run/media/liveuser/Seagate\ Backup\ Plus\ Drive/pc2-disk-image-Aug-25-2023.img.gzip  | dd of=/dev/mmcblk0 
+                        -or-
+                  cd   /run/media/liveuser/Seagate\ Backup\ Plus\ Drive    (change to source directory)
+                  gunzip -c pc2-disk-image-Aug-25-2023.img.gzip | dd of=/dev/mmcblk0
 
 
 
