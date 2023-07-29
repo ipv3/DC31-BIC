@@ -1,7 +1,6 @@
-###usr#bin#python3
-
+#!/usr/bin/python3        (on Linux to specify the interpreter)
 # a comment - hello_py.py
-# Python is interpreted; not compiled. 
-# To run on Linux: ./hello_py.py
+# To run on Linux:  ./hello_py.py
+# To run on Windows and Linux:  python3 hello_py.py
 
 print ("Hello, World!")
