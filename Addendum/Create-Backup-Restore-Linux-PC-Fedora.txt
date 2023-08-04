@@ -3,7 +3,7 @@ Document Version: 0.02  August 12, 2023
 Author:  D.J. Davis
 E-mail:  ZeroRingD@gmail.com
 Twitter: @ZeroRingD
-Copyright (C) 2023  D.J. Davis.  All Rights Reserved
+Copyright (C) 2023  D.J. Davis.  All Rights Reserved.
 
 
 TODO:
@@ -473,7 +473,7 @@ Optional: RESTORE HARD DRIVE FROM BACKUP IMAGE
 ==============================================
  Approximate Time: 1 hour (up to 5+ hours for larger hard drives and/or compression)
 
-Note:  This process DESTROYS your Linux installation on the PC. BEFORE performing these instructions, be sure to back up your hard drive if you want to retain it for later use.
+Note:  This process DESTROYS your Linux (or other OS) installation on the PC. BEFORE performing these instructions, be sure to back up your hard drive if you want to retain it for later use.
 
 Be sure that your PC is set to boot from a USB drive.  For more information, see the section: BOOT PC FROM FEDORA LIVE BOOT USB
 
@@ -546,4 +546,4 @@ Optional:  Restore Backup That Uses gzip Compression
 
 
 
-Copyright (C) 2023  D.J. Davis.  All Rights Reserved
+Copyright (C) 2023  D.J. Davis.  All Rights Reserved.
