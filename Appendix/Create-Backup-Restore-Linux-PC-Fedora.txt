@@ -1,4 +1,4 @@
-CREATE LINUX PC, INSTALL LANGUAGES, BACKUP/RESTORE HARD DRIVE - FEDORA LINUX WORKSTATION
+CREATE LINUX PC, INSTALL LANGUAGES, BACKUP/RESTORE HARD DRIVE - Fedora Linux Workstation
 Document Version: 0.02  August 12, 2023
 Author:  D.J. Davis
 E-mail:  ZeroRingD@gmail.com
@@ -6,8 +6,6 @@ Twitter: @ZeroRingD
 Copyright (C) 2023  D.J. Davis.  All Rights Reserved.
 
 
-TODO:
-License
 
 
 TABLE OF CONTENTS
@@ -52,7 +50,7 @@ In these instructions the mention of, and reference to, any documents constitute
 ERRATA
 ======
 
-None at this time.  Send any irregularites in the procedure to ZeroRingD@gmail.com
+None at this time.  Please send any irregularites in the procedure to ZeroRingD@gmail.com
 
 
 
@@ -166,34 +164,46 @@ On the welcome screen you are prompted whether you want to install Fedora. Choos
 
  3. Run the cmd prompt
 
- 4. Determine the device name of the drive to back up
 
-    It will be good to know the approximate size of the drive to make it easier to identify
-    Type:
-        su
-        fdisk -l
-        - or -
-        parted -l
+Determine the device name of the drive to back up, and the destination drive
+----------------------------------------------------------------------------
 
-    then:  df -h
-        This command makes it easier to see if your backup drive is mounted (and where)
+It will be good if you know the approximate size of the drive to make it easier to identify
 
+ 5. Look for the source drive; the drive that is to be backed up / duplicated / copied 
+        Type:
+            su
+            fdisk -l
+            - or -
+            parted -l
 
-    Look for the drive. Keep in mind that a drive can have several partitions. You NEED to back up the entire drive with all the partitions.  Examples:
-    /dev/sda
-    /dev/sdb
-    /dev/mmcblk0   (often seen with partitions p1 to p4)
+        Keep in mind that a drive can have several partitions. You NEED to back up the entire drive with all the partitions.  (This bears usefulness to repeat: usually you want to back up ALL of your primary hard drive; not just the partition that holds the majority of your stuff. You need ALL of the hard drive that includes the Boot Loader, Microsoft Windows Recovery partition, etc, etc.)
 
-    Identify the destination drive AND mounted directory path
-    Usually, USB drives and external drives are formatted for Windows.  Linux can read them
-    The PC hard drive should be unmounted and not appearing with the df -h command. Normally this is the default when using the Live image
+        Examples:
+            /dev/sda
+            /dev/sdb
+            /dev/mmcblk0   (often seen with partitions p1 through p3 or p4)
+
+ 6. Identify the destination/target drive AND mounted directory path; where the copy will be written   
+    (a) Type:
+            su
+            fdisk -l
+            - or -
+            parted -l
+
+    (b) then:  df -h
+            This command makes it easier to see if your target drive is mounted (and where)
+
+        Usually, USB drives and external drives are formatted for Windows.  Linux can read them
+
+        Note: The PC hard drive should be unmounted and not appearing with the df -h command. Normally this is the default when using the Live image
 
 
 Back Up the Drive Using the dd Linux Utility
 --------------------------------------------
- 5. Run a cmd prompt
+ 7. Run a cmd prompt
 
- 6. Type:
+ 8. Type:
         su  (if not superuser already)
         dd  if=/dev/xxxxxx  of=/<filepath>/<filename>
         Example:  dd if=/dev/mmcblk0   of=/run/media/liveuser/Seagate\ Backup\ Plus\ Drive/pc2-disk-image-Aug-25-2023.img
@@ -205,7 +215,10 @@ Because the path of the output file is so long AND this disk drive name contains
         -and-
     dd if=/dev/mmcblk0   of=pc2-disk-image-Aug-25-2023.img
 
-A little lesson about Linux:: In Linux, directory names and file names become "interesting" if they have spaces. Linux handles them, but Linux users often make their lives easier by using dashes or underscores instead of spaces. In the example above we see backslashes used. They are NOT in the directory name, but are used to make an "escape sequence" for a space. The following example might help. We can use:
+    Write down this command and save it for when you need to restore the image    
+
+
+    Note: A little lesson about spaces in filenames in Linux:: In Linux, directory names and file names become "interesting" if they have spaces. Linux handles them, but Linux users often make their lives easier by using dashes or underscores instead of spaces. In the example above we see backslashes used. They are NOT in the directory name, but are used to make an "escape sequence" for a space. The following example might help. We can use:
 cd Seagate\ Backup\ Plus\ Drive    -or-  cd 'Seagate Backup Plus Drive'
 The external drive has spaces in its name because it is formatted for... ... Windows.
 
@@ -215,14 +228,14 @@ The external drive has spaces in its name because it is formatted for... ... Win
 
     Note: It is recommended that you make a second copy on another USB drive or external hard drive
 
- 7. Optional Highly Recommended Step: Upon command completion, Capture the blocks copied with a picture or other method
+ 9. Optional Highly Recommended Step: Upon command completion, Capture the blocks copied with a picture or other method
 
- 8. Write down the command you used to back up the drive. Store this note with the drive
+10. Write down the command you used to back up the drive. Store this note with the drive
 
 
 Optional Highly Recommended: For integrity, compute a checksum for the backup file
 -----------------------------------------------------------------------------------
- 9. Type an appropriate command to compute a checksum of the file
+11. Type an appropriate command to compute a checksum of the file
         md5sum  /<filepath>/<filename>
         Example:  md5sum  /run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023.img
                     -or-
@@ -235,14 +248,14 @@ Optional Highly Recommended: For integrity, compute a checksum for the backup fi
     Note:  If you run the (same) checksum program over the input disk drive, the program should compute the same value as the backup file. Of course, this will take a while to run
            e.g.:  sha256sum  /dev/mmcblk0
 
-10. Capture the checksum value with a picture or other method
+12. Capture the checksum value with a picture or other method
 
 
 Finishing Steps
 ---------------
-11. Shut down the PC, power off the PC, and remove the USB drive where you wrote the backup file
+13. Shut down the PC, power off the PC, and remove the USB drive where you wrote the backup file
 
-12. Affix a label to the USB drive such as "MyPC HD Image 1 mm-dd-yyyy" or find a closable sandwich bag and label
+14. Affix a label to the USB drive such as "MyPC HD Image 1 mm-dd-yyyy" or find a closable sandwich bag and label
 
 
 Optional:  Back Up Using gzip Compression
