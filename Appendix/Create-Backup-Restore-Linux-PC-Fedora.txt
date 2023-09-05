@@ -1,5 +1,5 @@
 CREATE LINUX PC, INSTALL LANGUAGES, BACKUP/RESTORE HARD DRIVE - Fedora Linux Workstation
-Document Version: 0.02  August 12, 2023
+Document Version: 1.0  August 12, 2023
 Author:  D.J. Davis
 E-mail:  ZeroRingD@gmail.com
 Twitter: @ZeroRingD
