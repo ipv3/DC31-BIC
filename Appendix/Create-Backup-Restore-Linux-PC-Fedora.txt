@@ -1,11 +1,13 @@
 CREATE LINUX PC, INSTALL LANGUAGES, BACKUP/RESTORE HARD DRIVE - Fedora Linux Workstation
-Document Version: 1.0  August 12, 2023
+Document Version: 1.10  September 6, 2023
 Author:  D.J. Davis
 E-mail:  ZeroRingD@gmail.com
 Twitter: @ZeroRingD
 Copyright (C) 2023  D.J. Davis.  All Rights Reserved.
 
-
+---------------------------------------------------------------------
+1.0   08/12/2023  Initial release
+1.10  09/06/2023  Add language installation for Julia, Scala
 
 
 TABLE OF CONTENTS
@@ -463,6 +465,20 @@ Perform these steps while the PC has connectivity to the Internet to search repo
     If not installed:
         Type: dnf provides go
         Type: sudo dnf install golang
+
+    Julia
+    -----
+    Type: julia
+    If not installed:
+        Proceed to install package ==>  julia
+        If your regular account has insuficient privileges, type: sudo dnf install julia
+
+    Scala
+    -----
+    Type: scala
+    If not installed:
+        Proceed to install package ==>  scala
+        If your regular account has insuficient privileges, type: sudo dnf install scala
  
     NASM - Networkwide Assembler
     ----------------------------
