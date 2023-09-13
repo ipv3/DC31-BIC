@@ -1,0 +1,591 @@
+CREATE LINUX PC, INSTALL LANGUAGES, BACKUP/RESTORE HARD DRIVE - Ubuntu Linux Workstation
+Document Version: 0.21 [BETA RELEASE]  September 13, 2023
+Author:  D.J. Davis
+E-mail:  ZeroRingD@gmail.com
+Twitter: @ZeroRingD
+Copyright (C) 2023  D.J. Davis.  All Rights Reserved.
+
+---------------------------------------------------------------------
+0.21  09/13/2023  Beta release
+
+
+TABLE OF CONTENTS
+=================
+
+Introduction
+Disclaimer
+Prerequisites
+Errata
+Download OS Image; balenEtcher; Make Bootable Live USB
+Boot PC from Ubuntu Live Boot USB
+Optional: Back Up the Hard Drive
+Install Ubuntu Linux on Your PC
+Install Languages on Ubuntu Linux
+Optional: Restore Hard Drive from Backup Image
+
+
+
+
+INTRODUCTION
+============
+
+Oftentimes, the most straight-forward platform for program development is Linux. We can find an old PC that works well with Linux, but then there is the "joy" of figuring out the OS install, and the hesitancy of losing the current OS environment. To address these concerns, this document walks us through a new OS install while creating a block-by-block backup copy of the current hard drive that can be restored later. And did I say that Linux is free???
+
+With the advent of Linux Live images, we can boot off of a USB stick to play with an environment without installing the OS to the hard drive. The Live image gives us a flavor of the environment. Also, it provides tools for system administration. This includes tools to run a backup, a restore, and perform a checksum calculation of a file or hard drive to verify the integrity of a copy later.
+
+
+
+
+DISCLAIMER
+==========
+
+The information provided here is presented as a free service for general informational purposes only. This service is under development. While the author tries to present information that is timely and accurate, the author makes no guarantees or warranties. The author and/or any presentation venue makes no representation, warranty or guarantee of any kind, neither express nor implied, regarding the accuracy, completeness, validity, or fitness-of-purpose of this information.
+
+Use this information at your own risk. Do not perform these instructions on a Production computer.  Do not perform these instructions on any computer that contains important/needed/desired information that you need to retain. Be aware that these instructions will result in a new operating system being installed that will erase any previous operating system, programs, configuration, and data. Be sure to read and understand all of these instructions before you begin.
+
+In these instructions the mention of, and reference to, any documents constitutes a fair-use of any copyrighted material as provided for in Section 107 of the US copyright law.
+
+
+
+
+ERRATA
+======
+
+None at this time.  Please send any irregularites in the procedure to ZeroRingD@gmail.com
+
+
+
+
+PREREQUISITES
+=============
+
+- An Intel PC (but not a Chrome PC): minimum 4 GB RAM, preferably 8 GB or greater, minimum 25 GB disk,
+preferably 64 GB or greater. If you need to back up the hard drive, the size should be preferably 512 GB or less (because the backup drive/file needs to be larger). Currently, Linux has been seen to run reliably on systems that might be below the official minimum specs for RAM, processor cores, or speed 
+- IF YOU CANNOT USE THE DESTINATION PC TO DOWNLOAD AND SAVE THE OS IMAGE (e.g. you're installing on a new PC and you want to back up the disk image for later use): A Windows/Mac/Linux PC with minimum 3 GB disk free, at least 1 available USB drive slot, and Internet connectivity
+- The ability to set the BIOS to boot from a USB drive before the PC boots from its hard drive
+- A USB flash drive 12 GB or greater to hold the Ubuntu Live bootable image. I recommend USB 3.0 or faster
+- IF YOU NEED TO BACK UP THE EXISTING HARD DRIVE OF DESTINATION PC: That PC must have at least 2 USB slots (of the proper size) to perform a backup of the PC disk drive
+- IF YOU NEED TO BACK UP THE EXISTING HARD DRIVE OF DESTINATION PC: A USB flash drive OR external hard drive that is larger than the PC disk drive.  I recommend USB 3.0 or faster (Note: The size of the backup file can be less than the hard drive of the destination PC if optional compression is used)
+- If plugging in 2 USB Flash drives at the same time, check to make sure the slots are not too close. On some systems the slots are two close for 2 USB Flash drives side by side (this issue has been observed on an HP laptop)
+- Camera/cameraphone to document a few settings
+- Internet connectivity (get the Wi-Fi password if it is a protected network)
+
+
+
+
+DOWNLOAD OS IMAGE; balenETCHER, MAKE BOOTABLE LIVE USB
+=======================================================
+ Approximate Time: 1 hour
+
+Download Ubuntu Live Boot USB Image
+-----------------------------------
+
+ 1. Create a directory under C:\  such as C:\Ubuntu-Download
+
+ 2. Go to Ubuntu Workstation Download Page:
+    https://ubuntu.com/download/desktop
+
+ 3. Download:  Ubuntu. Either the latest release or the Long Term Support (LTS) release. At the
+    time of testing, latest release 23.04 was installed but was found to have a significant
+    number of bugs. The update had to be applied. The LTS release is likely to have more stability
+
+ 4. Cut/Paste the Live ISO image from the browser download directory to C:\Ubuntu-Download
+
+
+Download/Install/Run balenEtcher
+---------------------------------
+
+ 5. Download:  balenEtcher
+    Go to  https://ubuntu.com/tutorials/install-ubuntu-desktop#3-create-a-bootable-usb-stick
+
+    Under "3. Create a Bootable USB Stick", click on balenaEtcher
+    Accept / Reject the Cookies
+
+ 6. Click on the Download link for your appropriate version for balenEtcher
+    Usually ETCHER FOR WINDOWS (X86|X64) (INSTALLER) WINDOWS
+
+    Download the software
+
+    After it downloads, choose open file or similar in your browser to run
+    Click: I Agree to accept the License agreement
+
+    After a few minutes, the software installation is complete 
+
+ 7. By default, Ether will run after the installation
+
+    You see the software icon running on the task bar.  The open window might be behind the
+    broswer window.  Minimize the browser or click the icon to bring Etcher to the foreground.
+
+    Insert your fresh USB stick
+    Click: "Flash from file" and select the Ubuntu iso image that you saved to C:\Ubuntu-Dowmloads
+        or a similar location
+    "Select Target"  - choose your fresh USB memory stick
+    "Select Flash!"  - the copy will begin
+
+    The USB copy should take about 5 minutes or less
+
+    If Windows says: "You need to format the disk in drive D:\ before you can use it..."  cancel 
+    this dialog box; do NOT attempt to format the drive.  This message might appear several times
+
+    After a few minutes Etcher should display the message "Flash Completed!".  Close the program 
+    by clicking the X (Close) button on the top-right side of the window
+
+ 8. Unmount the USB drive & remove, or shut down the PC / power off the PC and remove the USB drive
+    Go to "Safely Remove Hardware (slide-up on right side of Task bar) and eject the USB stick
+
+ 9. Affix a label to the USB drive as "Ubuntu Live Boot" or find a closable sandwich bag and label
+
+
+
+
+BOOT PC FROM UBUNTU LIVE BOOT USB
+=================================
+ Approximate Time: 30 minutes (longer to learn skills in Step 5)
+
+ 1. With the PC off, insert the USB drive
+
+ 2. Set the USB drive (perhaps USB HDD) so that it boots before the regular Hard drive
+    Note:  There is a good chance that you might need to go into the BIOS settings to change the boot order
+    After power-on you Might need to press ENTER, F12, F10 , F2, F1, DEL, possibly F4, or some other function key to enter the BIOS Setup menu or Boot menu.  There might or might not be guidance displayed on the screen after power on.
+
+ 3. Power on the PC and boot from the USB drive
+    Boot menu:
+        Try or Install Ubuntu
+
+ 4. On the Welcome to Ubuntu screen you are prompted to "Choose your language". Select your preferred language (usually English) and click Next
+    You are prompted to "Try or Install Ubuntu".  Click Try Ubuntu.  Click Next
+
+ 5. Explore your Live Boot OS or search the Internet to learn the following tasks/skills:
+    - Connect PC to WiFi/Internet
+    - Start a CLI window
+    - In CLI, basic command entry and command completion (Tab key)
+    - Start the Internet browser (Firefox)
+    - Shut down Ubuntu
+
+
+
+
+Optional: BACK UP THE HARD DRIVE
+================================
+ Approximate Time: 1 hour (up to 3+ hours for larger hard drives and/or compression)
+
+ 1. WITH THE COMPUTER OFF, plug in the Ubuntu Live USB. Also, plug in the USB drive or external hard drive cable where the backup image will be written
+
+ 2. Boot Computer from the Ubuntu Live USB
+On the Welcome to Ubuntu screen you are prompted to "Choose your language". Select your preferred language (usually English) and click Next.  You are prompted to "Try or Install Ubuntu".  Click Try Ubuntu.  Click Next
+
+ 3. Run the cmd prompt
+
+
+Determine the device name of the drive to back up, and the destination drive
+----------------------------------------------------------------------------
+
+It will be good if you know the approximate size of the drive to make it easier to identify
+
+ 5. Look for the source drive; the drive that is to be backed up / duplicated / copied 
+        Type:
+            sudo su
+            fdisk -l
+            - or -
+            parted -l
+
+        Keep in mind that a drive can have several partitions. You NEED to back up the entire drive with all the partitions.  (This bears usefulness to repeat: usually you want to back up ALL of your primary hard drive; not just the partition that holds the majority of your stuff. You need ALL of the hard drive that includes the Boot Loader, Microsoft Windows Recovery partition, etc, etc.)
+
+        Examples:
+            /dev/sda
+            /dev/sdb
+            /dev/mmcblk0   (often seen with partitions p1 through p3 or p4)
+
+ 6. Identify the destination/target drive AND mounted directory path; where the copy will be written   
+    (a) Type:
+            sudo su
+            fdisk -l
+            - or -
+            parted -l
+
+    (b) then:  df -h
+            This command makes it easier to see if your target drive is mounted (and where)
+
+        Usually, USB drives and external drives are formatted for Windows.  Linux can read them
+
+        Note: The PC hard drive should be unmounted and not appearing with the df -h command. Normally this is the default when using the Live image
+
+
+Back Up the Drive Using the dd Linux Utility
+--------------------------------------------
+ 7. Run a cmd prompt
+
+ 8. Type:
+        su  (if not superuser already)
+        dd  if=/dev/xxxxxx  of=/<filepath>/<filename>
+        Example:  dd if=/dev/mmcblk0   of=/run/media/liveuser/Seagate\ Backup\ Plus\ Drive/pc2-disk-image-Aug-25-2023.img
+
+Because the path of the output file is so long AND this disk drive name contains spaces, an easier way to do this is to go to this longer directory and then only have to enter the ending filename. Using [Tab] completion, this process becomes:
+    cd /run/media [Tab] [Tab] [Tab] [Enter]    (assumes media and liveuser have no additional files)
+       -followed by the command -
+    pwd      (to see that you are there)
+        -and-
+    dd if=/dev/mmcblk0   of=pc2-disk-image-Aug-25-2023.img
+
+    Write down this command and save it for when you need to restore the image    
+
+
+    Note: A little lesson about spaces in filenames in Linux:: In Linux, directory names and file names become "interesting" if they have spaces. Linux handles them, but Linux users often make their lives easier by using dashes or underscores instead of spaces. In the example above we see backslashes used. They are NOT in the directory name, but are used to make an "escape sequence" for a space. The following example might help. We can use:
+cd Seagate\ Backup\ Plus\ Drive    -or-  cd 'Seagate Backup Plus Drive'
+The external drive has spaces in its name because it is formatted for... ... Windows.
+
+    Note: This process might take 10 minutes to an hour or more.  The entire contents of the drive are read and copied. Also, a backup versus a restore might take a significantly *different* amount of time. (With 64 GB eMMC (Flash memory) hard drive PC a backup takes about 10 minutes but a restore takes around 90 minutes). Normally, the dd command does not provide any feedback until it ends. While waiting, the screen will go dark in 5 or 10 minutes without any keyboard/mouse input. Just press the SHIFT key to display the screen.
+
+    NOTE: The input file (if=) is the PC internal hard drive, it is usually NOT mounted by Linux during the Live boot; this is good because it probably should not be mounted during this copy operation. The command might complain if the input file (if=) is mounted. On the other hand, the destination drive needs to be mounted with a file path to the directory where you plan to write. In the current Live version of Ubuntu, the destination drive is mounted automatically *IF* it is plugged in when the Live image is booted. As we see here, Ubuntu mounted the external drive at /run/media/liveuser/Seagate Backup Plus Drive.  We can see this readily with the  df -h  command; it shows us that Ubuntu mounted the /dev/sda1 filesystem (containing a 1.9TB drive) on the mount point /run/media/liveuser/Seagate Backup Plus Drive.
+
+    Note: It is recommended that you make a second copy on another USB drive or external hard drive
+
+ 9. Optional Highly Recommended Step: Upon command completion, Capture the blocks copied with a picture or other method
+
+10. Write down the command you used to back up the drive. Store this note with the drive
+
+
+Optional Highly Recommended: For integrity, compute a checksum for the backup file
+-----------------------------------------------------------------------------------
+11. Type an appropriate command to compute a checksum of the file
+        md5sum  /<filepath>/<filename>
+        Example:  md5sum  /run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023.img
+                    -or-
+                sha256sum /run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023.img
+
+    At least five checksum utility programs are available on the Live USB: sum, md5sum, sha1sum, sha256sum, and sha512sum. Of these, md5sum and sha256sum might appear to be used more frequently.
+
+    Note:  This will take a while.  The hard drive back-up image is a very large file
+
+    Note:  If you run the (same) checksum program over the input disk drive, the program should compute the same value as the backup file. Of course, this will take a while to run
+           e.g.:  sha256sum  /dev/mmcblk0
+
+12. Capture the checksum value with a picture or other method
+
+
+Finishing Steps
+---------------
+13. Shut down the PC, power off the PC, and remove the USB drive where you wrote the backup file
+
+14. Affix a label to the USB drive such as "MyPC HD Image 1 mm-dd-yyyy" or find a closable sandwich bag and label
+
+
+Optional:  Back Up Using gzip Compression
+-----------------------------------------
+ 1. Type:
+        sudo su  (if not superuser already)
+        dd  if=/dev/xxxxxx | gzip -c  >  /<filepath>/<filename>
+        Example:  dd if=/dev/mmcblk0 | gzip -c > /run/media/liveuser/Seagate\ Backup\ Plus\ Drive/pc2-disk-image-Aug-25-2023.img.gzip
+                        -or-
+                  cd   /run/media/liveuser/Seagate\ Backup\ Plus\ Drive    (change to dest directory)
+                  dd if=/dev/mmcblk0 | gzip -c > pc2-disk-image-Aug-25-2023.img.gzip
+
+    This will take notably longer than a backup without compression. In my lightly used system with a 64 GB disk, the gzipped backup was about 7 GB; 11 percent of the original size. 
+
+
+
+
+INSTALL UBUNTU LINUX ON YOUR PC
+===============================
+ Approximate Time: 1 hour
+
+Information on the installation process can be found here:
+https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview
+
+ 1. Boot Computer from the USB
+
+ 2. If possible, get on Wi-Fi and the Internet before proceeding
+
+ 3. Follow this set of prompts
+    "Welcome to Ubuntu"
+    "CYL
+    Choose your language  -  English  Click: Next
+
+    "Try or Install Ubuntu"
+    Choose Install Ubuntu.  Click: Next
+
+    "Keyboard layout"
+    Select English.  Click: Next
+
+    "Connect to a Network"
+    Choose: Connect to a Wi-Fi network.  Click Next
+    You will be able to enter credentials and connect.  You might not be able to move forward
+    with the installation. Choose: "I don't want to connect right now".  You should still be
+    connected to the Internet.
+
+    "Applications and Updates"
+    Choose: Normal Installation.  Click: Next
+
+    "Type of Installation"
+    Choose: Erase Disk and Install Ubutu.  Click: Next
+
+    "Ready to Install"
+    This screen lists the disk configuration.  Click: Install
+
+    "Select Your Timezone"
+    Select your location and timezone.  Click: Next
+
+    "Set Up Your Account"
+    Type in your name.  This fields in "Your Computer Name" and "Pick a usrname".
+    EDIT these fields
+    Choose a password.  Confirm your password.  Click: Next
+
+    "Choose your theme"
+    Select Light, or select Dark.  Click: Next
+
+    The Ubuntu installation can take 20 or 30 minutes.
+
+    "Ubuntu yy.mm is installed and ready for use"
+    Click: Restart now
+
+    "Please remove the installation medium, then press ENTER:"
+
+ 4. Remove the Live USB.  Press Enter
+    Your PC restarts
+    If there is a CPU software bug occuring after 3 minutes, power off the PC and restart
+
+ 5. Follow this set of prompts
+    Login screen
+    Select your username.  Type in your password and press Enter
+
+    If there is a bug in the installation process, you can choose to send or not send the bug
+    information to the operating system development company. 
+
+    "Privacy Location Services"
+    Turn on or leave it off.  Click Next
+
+    "Ready to Go"
+    Click: Done
+
+Note: At least for Ubuntu 23.04 that is STS (Short-Term Support), you might need to apply
+      updates immediately due to bugs in the initial release. For example, Firefox was unable
+      to run until the update was applied.
+
+
+Optional: Regarding the root password
+In this procedure the password that is set is for our regular user account is a portion of the installation process.  Unix/Linux systems use an account named "root" for system and administrative processes. It is possible to administer some aspects of a system without knowing the root password. Upon installation, our user is added to a role called "sudo" tht allows us to run administrative system commands by confirming our own regular user password.
+Example:
+    sudo less /var/log/anaconda/anaconda.log
+This command grants a super-user privilege to run the less/more command to read an installation log that is a protected system file.
+
+Although it is sometimes not recommended, some system owners desire to set and have the root password. If this is desired, the following command allows a regular user with sudo privileges to set the root password:
+    sudo passwd root
+
+Be sure to protect this credentially properly.  Also, if additional users are added to your system, be sure to regulate the users who have sudo privileges. sudo permissions are configured in file /etc/sudoers. In this file, we see a setup for users who are in a group that is named "wheel". We look at the file named /etc/group and see that our regular account is added to the entry for the "wheel" group. Naturally we need to exercise due care and due dilligence for the users who are added to the "wheel" group entry.
+
+
+
+
+INSTALL LANGUAGES ON UBUNTU LINUX
+=================================
+ Approximate Time: 1 hour
+
+By default, Perl and Python version 3 are installed. 
+ 1. To test:
+    Type: perl
+       ...to exit press Ctrl-C  --or--  press Ctrl-D
+    Type: python
+       ... to exit press Ctrl-D
+
+The PHP runtime and Java Runtime (JRE) are also installed by default, but these require the command-line and compiler, respectively
+
+
+Check / Install Other Languages and Preferred Text Editor
+---------------------------------------------------------
+Perform these steps while the PC has connectivity to the Internet to search repositories and install software.
+
+2. It is probably a good idea to have the C and C++ compiler and related tools installed. Other software might depend on them
+    C
+    ---
+    Type: gcc
+    If not installed:
+        Type:  sudo apt install gcc
+
+    C++
+    ---
+    Type: g++
+    If not installed:
+        Type:  sudo apt install g++
+
+ 3. Install any/all of these languages that you choose
+    Ruby
+    ----
+    Type: ruby
+    If present: 
+        Type  end  --or--  press Ctrl-C  --or--  press Ctrl-D  to exit
+    If not installed:
+        Type:  sudo apt install ruby
+
+    Rust
+    ----
+    Type: rustc
+    If not installed:
+        Type:  sudo apt install rustc
+
+    PHP command line
+    ----------------
+    Type: php
+    If present: 
+       Press Ctrl-C  --or-- press Ctrl-D  to exit
+    If not installed:
+        Type:  sudo apt install php-cli
+
+    Swift
+    -----
+    Type: swiftc
+    If not installed:
+
+    Note: Currently, no suitable automated install can be found. Search online for a manual
+    installation method.
+
+
+    NodeJS
+    ------
+    Type: node
+    If present: 
+        Type  .exit  to exit
+    If not installed:
+        Type: sudo apt install nodejs
+
+    Java
+    ----
+    Type: javac
+    If not installed:
+        Type: sudo apt install openjdk-17-jdk-headless
+
+    Kotlin
+    ------
+    Type: kotlinc 
+    If present: 
+        Type  Ctrl-C to exit
+    If not installed:
+        Type: sudo apt install kotlin
+
+    Note: On Fedora Linux, Kotlin is a manual install. There is no RPM / package available.
+
+
+    Go
+    ------
+    Type: go
+    If present: 
+        Type  .exit  to exit   
+    If not installed:
+        Type: sudo apt install golang-go
+
+    Julia
+    -----
+    Type: julia
+    If not installed:
+        Type: sudo apt install julia --classic
+
+    Scala
+    -----
+    Type: scala
+    If not installed:
+        Type:  sudo apt install scala
+
+    Note on Scala: In the installation, there are 2 programs of interest: the Scala compiler
+    (scalac) and the combination interactive shell REPL / program execution engine (scala). 
+    On Ubuntu, program scala cores/crashes when it is attempted to use as an interactive 
+    shell. But scala DOES execute a program that has been compiled with scalac. In summary,
+    interactive REPL mode does not work, script mode does not work, but running a compiled
+    program DOES work.  This anomaly is observed on Uuntu 23.04. The scala program does work
+    correctly on Fedora Linux as is observed on Fedora 38.
+
+ 
+    NASM - Networkwide Assembler
+    ----------------------------
+    Type: nasm
+    If not installed:
+        Type:  sudo apt install nasm
+
+
+ 4. Ubuntu comes with gnome-text-editor. You can use this to edit program source code files. Or from
+    the command line, you can use Vi / Vim. If you prefer a different text editor, install gedit 
+    (or a similar) graphical editor that works well with programming languages
+    gedit Editor
+    ------------
+    Type: gedit
+    If not installed:
+        Type:  sudo apt install gedit
+
+
+
+Optional: RESTORE HARD DRIVE FROM BACKUP IMAGE
+==============================================
+ Approximate Time: 1 hour (up to 5+ hours for larger hard drives and/or compression)
+
+Note:  This process DESTROYS your Linux (or other OS) installation on the PC. BEFORE performing these instructions, be sure to back up your hard drive if you want to retain it for later use.
+
+Be sure that your PC is set to boot from a USB drive.  For more information, see the section: BOOT PC FROM UBUNTU LIVE BOOT USB
+
+Boot PC from Linux Live USB
+---------------------------
+ 1. WITH THE COMPUTER OFF, plug in the Ubuntu Live USB. Also, plug in the USB drive or external hard drive cable that contains the drive image that is to be restored
+
+ 2. Boot Computer from the Ubuntu Live USB
+On the Welcome to Ubuntu screen you are prompted to "Choose your language". Select your preferred language (usually English) and click Next.  You are prompted to "Try or Install Ubuntu".  Click Try Ubuntu.  Click Next
+
+3. Run the cmd prompt
+
+
+Find Your Drives
+----------------
+ 4. Determine the device names of the USB drive / external drive containing the backup image, and the interal hard drive to be overwritten
+
+    It will be good to know the approximate sizes of these drives to make them easier to identify
+    Type:
+        sudo su
+        fdisk -l
+         --optionally you can use ... --
+        parted -l
+
+    then:  df -h
+        This command makes it easier to see if your backup drive is mounted (and where)
+
+ 5. Look for the drives. You NEED to restore the entire drive with all of its partitions.  Examples:
+    /dev/sda
+    /dev/mmcblk0   
+ 
+    If you wrote down the command you used to back up the drive, you can refer to it. Often, the restore command is a simple reversal of the input and output. But use the  fdisk -l  and  df -h  commands to verify
+
+
+Restore the Hard Drive Using the dd Linux Utility
+-------------------------------------------------
+ 6. dd  if=/<filepath/<filename>  of=/dev/xxxxxx
+    Example:  dd if=/run/media/liveuser/Seagate Backup Plus Drive/pc2-disk-image-Aug-25-2023.img of=/dev/mmcblk0
+
+    Note: This process might take an hour or more.  The entire contents of the backup file are read and copied to the hard drive
+    If you captured the blocks copied with a picture or other method, you can compare this upon the completion of the command
+
+ 7. Optional Highly Recommended Step: For integrity, compute a checksum for the restored drive
+
+    Use the SAME checksum program that was used during the backup procedure
+        md5sum    /dev/<device>
+        sha256sum /dev/<device>
+        Example:  md5sum    /dev/mmcblk0
+                    -or-
+                  sha256sum /dev/mmcblk0
+
+ 8. Optional Highly Recommended Step: Upon command completion, Capture the checksum with a picture or other method
+
+ 9. Shut down the PC
+
+10. Remove the USB drives
+
+11. Boot the PC to test the restored operating system
+
+
+Optional:  Restore Backup That Uses gzip Compression
+-----------------------------------------------------
+ 1. Type:
+        sudo su  (if not superuser already)
+        gunzip -c /<filepath>/<filename> |  dd  of=/dev/xxxxxx  
+        Example:  gunzip -c /run/media/liveuser/Seagate\ Backup\ Plus\ Drive/pc2-disk-image-Aug-25-2023.img.gzip  | dd of=/dev/mmcblk0 
+                        -or-
+                  cd   /run/media/liveuser/Seagate\ Backup\ Plus\ Drive    (change to source directory)
+                  gunzip -c pc2-disk-image-Aug-25-2023.img.gzip | dd of=/dev/mmcblk0
+
+
+
+Copyright (C) 2023  D.J. Davis.  All Rights Reserved.
