@@ -1,13 +1,15 @@
 CREATE LINUX PC, INSTALL LANGUAGES, BACKUP/RESTORE HARD DRIVE - Fedora Linux Workstation
-Document Version: 1.10  September 6, 2023
+Document Version:  1.2.0  October 14, 2023
+Document Location: https://github.com/ipv3/DC31-BIC  in Appendix folder
 Author:  D.J. Davis
 E-mail:  ZeroRingD@gmail.com
 Twitter: @ZeroRingD
 Copyright (C) 2023  D.J. Davis.  All Rights Reserved.
 
 ---------------------------------------------------------------------
-1.0   08/12/2023  Initial release
-1.10  09/06/2023  Add language installation for Julia, Scala
+1.0    08/12/2023  Initial release
+1.10   09/06/2023  Add language installation for Julia, Scala
+1.2.0  10/14/2023  Minor edits. Added: Comments parity with Ubuntu, Doc location, Version tested
 
 
 TABLE OF CONTENTS
@@ -59,6 +61,8 @@ None at this time.  Please send any irregularites in the procedure to ZeroRingD@
 
 PREREQUISITES
 =============
+
+Version tested: Fedora 38
 
 - An Intel PC (but not a Chrome PC): minimum 2 GB RAM, preferably 4 GB or greater, minimum 32 GB disk,
 preferably 64 GB or greater. If you need to back up the hard drive, the size should be preferably 512 GB or less (because the backup drive/file needs to be larger). Currently, Linux has been seen to run reliably on systems that might be below the official minimum specs for RAM, processor cores, or speed 
@@ -279,6 +283,8 @@ INSTALL FEDORA LINUX ON YOUR PC
 ===============================
  Approximate Time: 1 hour
 
+Version tested: Fedora 38
+
  1. Boot Computer from the USB
 
  2. Get on Wi-Fi and the Internet
@@ -428,6 +434,10 @@ Perform these steps while the PC has connectivity to the Internet to search repo
         Proceed to install package ==>  swift-lang
         If your regular account has insuficient privileges, type: sudo dnf install swift-lang
 
+    Note: On Ubuntu Linux, Swift is a manual install. There is no package available.
+
+
+
     NodeJS
     ------
     Type: node
@@ -449,7 +459,7 @@ Perform these steps while the PC has connectivity to the Internet to search repo
     ------
     Type: kotlinc 
     If present: 
-        Type  Ctrl-C   Ctrl-C to exit
+        Type  Ctrl-C  to exit
     If not installed:
         As directed on the kotlinlang.org website ...
         Type: curl -s "https://get.sdkman.io" | bash

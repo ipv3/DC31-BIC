@@ -1,12 +1,13 @@
 CREATE LINUX PC, INSTALL LANGUAGES, BACKUP/RESTORE HARD DRIVE - Ubuntu Linux Workstation
-Document Version: 0.21 [BETA RELEASE]  September 13, 2023
+Document Version:  1.0.0  October 14, 2023
+Document Location: https://github.com/ipv3/DC31-BIC  in Appendix folder
 Author:  D.J. Davis
 E-mail:  ZeroRingD@gmail.com
 Twitter: @ZeroRingD
 Copyright (C) 2023  D.J. Davis.  All Rights Reserved.
 
 ---------------------------------------------------------------------
-0.21  09/13/2023  Beta release
+1.0.0  10/14/2023  Initial release
 
 
 TABLE OF CONTENTS
@@ -59,8 +60,9 @@ None at this time.  Please send any irregularites in the procedure to ZeroRingD@
 PREREQUISITES
 =============
 
-- An Intel PC (but not a Chrome PC): minimum 4 GB RAM, preferably 8 GB or greater, minimum 25 GB disk,
-preferably 64 GB or greater. If you need to back up the hard drive, the size should be preferably 512 GB or less (because the backup drive/file needs to be larger). Currently, Linux has been seen to run reliably on systems that might be below the official minimum specs for RAM, processor cores, or speed 
+Version tested: 23.04
+
+- An Intel PC (but not a Chrome PC): minimum 4 GB RAM, minimum 25 GB disk (the author prefers 64 GB or greater to install languages), 2 GHz dual core processor, VGA capable of 1024x768 screen resolution. If you need to back up the hard drive, the size should be preferably 512 GB or less (because the backup drive/file needs to be larger). The author has not tested Ubuntu on systems that might be below the official minimum specs for RAM, processor cores, or speed; therefore the author cannot make a recommendation on this. The Ubuntu Live Boot image did run on a 2 GB RAM, 1 GHz dual core processor laptop PC. The system performance was on the low end of being acceptable. In dmesg, the kernel did advise that some internal ations were too slow and the kernel was readjusting its timing. Ubuntu might install successfully on this system although the author will not test this configuration
 - IF YOU CANNOT USE THE DESTINATION PC TO DOWNLOAD AND SAVE THE OS IMAGE (e.g. you're installing on a new PC and you want to back up the disk image for later use): A Windows/Mac/Linux PC with minimum 3 GB disk free, at least 1 available USB drive slot, and Internet connectivity
 - The ability to set the BIOS to boot from a USB drive before the PC boots from its hard drive
 - A USB flash drive 12 GB or greater to hold the Ubuntu Live bootable image. I recommend USB 3.0 or faster
@@ -130,7 +132,7 @@ Download/Install/Run balenEtcher
     After a few minutes Etcher should display the message "Flash Completed!".  Close the program 
     by clicking the X (Close) button on the top-right side of the window
 
- 8. Unmount the USB drive & remove, or shut down the PC / power off the PC and remove the USB drive
+ 8. Unmount the USB drive and remove, or shut down PC / power off PC and remove the USB drive
     Go to "Safely Remove Hardware (slide-up on right side of Task bar) and eject the USB stick
 
  9. Affix a label to the USB drive as "Ubuntu Live Boot" or find a closable sandwich bag and label
@@ -289,12 +291,16 @@ INSTALL UBUNTU LINUX ON YOUR PC
 ===============================
  Approximate Time: 1 hour
 
+Version tested: 23.04
+
 Information on the installation process can be found here:
 https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview
 
  1. Boot Computer from the USB
 
- 2. If possible, get on Wi-Fi and the Internet before proceeding
+ 2. If possible, get on Wi-Fi and the Internet before proceeding. This will make the
+    "Connect to a Network" step much easier. Performing this here might have implications
+    for a better install; this is unconfirmed however
 
  3. Follow this set of prompts
     "Welcome to Ubuntu"
@@ -435,8 +441,13 @@ Perform these steps while the PC has connectivity to the Internet to search repo
     Type: swiftc
     If not installed:
 
-    Note: Currently, no suitable automated install can be found. Search online for a manual
-    installation method.
+    Note: Currently, no automated install is found. For manual instuctions, go to:
+            https://www.swift.org/install/
+        Scroll down to the Linux section and click on the Tarball link
+        Review the instructions. They are quite involved.
+        During the installation, you will need the tar file. Choose the appropriate one here:
+            https://www.swift.org/download/
+        But do not download, extract, and expect it to work without the manual procedures
 
 
     NodeJS
